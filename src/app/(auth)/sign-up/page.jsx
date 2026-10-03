@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { authClient } from '../../../lib/auth-client';
+import { signUp } from '../../../lib/auth-client';
 import {
   Button,
   Description,
@@ -25,7 +25,7 @@ const onSubmit = async (e) => {
       data[key] = value.toString();
     });
 
-    const { data:signUpData, error } = await authClient.signUp.email({
+    const { data:signUpData, error } = await signUp.email({
     name: data.name,
     email: data.email,
     password: data.password,
@@ -50,14 +50,14 @@ console.log( signUpData,error);
       </div>
 
       {/* Signup Card */}
-      <div className="relative z-10 w-full max-w-md animate-[fadeIn_0.7s_ease-out]">
+     <div className="relative z-10 w-full max-w-md animate-fade-in">
 
         <div className="rounded-3xl border border-white/80 bg-white/80 p-6 shadow-[0_20px_70px_rgba(99,102,241,0.12)] backdrop-blur-xl sm:p-9">
 
           {/* Header */}
           <div className="mb-8 text-center">
 
-            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-2xl font-bold text-white shadow-lg shadow-violet-300/50 transition-transform duration-300 hover:scale-110">
+            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-violet-500 to-indigo-600 text-2xl font-bold text-white shadow-lg shadow-violet-300/50 transition-transform duration-300 hover:scale-110">
               S
             </div>
 
@@ -164,7 +164,7 @@ console.log( signUpData,error);
 
                 <Button
                   type="submit"
-                  className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 py-3 font-semibold text-white shadow-lg shadow-violet-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-300/50 active:scale-[0.98]"
+                  className="w-full rounded-xl bg-linear-to-r from-violet-600 to-indigo-600 py-3 font-semibold text-white shadow-lg shadow-violet-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-300/50 active:scale-[0.98]"
                 >
                   Create Account
                   <span className="ml-2 text-lg">→</span>
@@ -203,19 +203,7 @@ console.log( signUpData,error);
 
       </div>
 
-      {/* Animation */}
-      <style jsx global>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+     
 
     </main>
     );
